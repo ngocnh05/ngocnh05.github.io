@@ -1,15 +1,37 @@
 "use client";
 
+import { useState } from "react";
 import { useApp } from "@/context/AppContext";
 import { HOMEPAGE_BASIC_INFOR } from "@/lib/homePageInfo";
 import Stack from "@/components/home/CardRotate";
 import CardWhatICanDo from "@/components/home/CardWhatIcanDo";
 import ScrollHint from "@/components/ScrollHint";
 import LinkButton from "@/components/LinkButton";
+import ResumeModal from "@/components/home/ResumeModal";
+import {
+  SiFigma,
+  SiDiagramsdotnet,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiCanva,
+  SiYoutube,
+  SiTiktok,
+} from "react-icons/si";
+import {
+  FiLayout,
+  FiLayers,
+  FiCheckCircle,
+  FiImage,
+  FiEye,
+  FiVideo,
+  FiType,
+  FiVolume2,
+} from "react-icons/fi";
 
 export default function Home() {
     const { t } = useApp();
     const info = HOMEPAGE_BASIC_INFOR;
+    const [isResumeOpen, setIsResumeOpen] = useState(false);
 
     const placeholderImages = [
         {
@@ -36,14 +58,44 @@ export default function Home() {
         {
             title: t.home.spec1Title,
             contain: t.home.spec1Bullets,
+            imageSrc: "/computer_graphic_image.png",
+            imageAlt: "UI/UX & Interactive Design",
+            isReverse: false,
+            tools: [
+                { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+                { name: "draw.io", icon: SiDiagramsdotnet, color: "#F08705" },
+                { name: "User Flow", icon: FiLayout, color: "#38BDF8" },
+                { name: "Wireframe", icon: FiLayers, color: "#C084FC" },
+                { name: "Prototype", icon: FiCheckCircle, color: "#34D399" },
+            ],
         },
         {
             title: t.home.spec2Title,
             contain: t.home.spec2Bullets,
+            imageSrc: "/ml_image.png",
+            imageAlt: "2D Graphic Design & Visual Media",
+            isReverse: true,
+            tools: [
+                { name: "Photoshop", icon: SiAdobephotoshop, color: "#31A8FF" },
+                { name: "Illustrator", icon: SiAdobeillustrator, color: "#FF9A00" },
+                { name: "Canva", icon: SiCanva, color: "#00C4CC" },
+                { name: "Poster & Banner", icon: FiImage, color: "#F472B6" },
+                { name: "Key Visual", icon: FiEye, color: "#FACC15" },
+            ],
         },
         {
             title: t.home.spec3Title,
             contain: t.home.spec3Bullets,
+            imageSrc: "/deploy_image.png",
+            imageAlt: "Video Editing & Multimedia Production",
+            isReverse: false,
+            tools: [
+                { name: "CapCut Pro", icon: FiVideo, color: "#22D3EE" },
+                { name: "YouTube", icon: SiYoutube, color: "#FF0000" },
+                { name: "TikTok", icon: SiTiktok, color: "#00F2FE" },
+                { name: "Subtitle Sync", icon: FiType, color: "#A78BFA" },
+                { name: "AI Voice / TTS", icon: FiVolume2, color: "#4ADE80" },
+            ],
         },
     ];
 
@@ -55,13 +107,17 @@ export default function Home() {
                 <div className="p-8 md:pt-20 lg:pt-20">
                     <h1 className="flex items-center justify-center lg:mt-10">{t.home.fullname}</h1>
                     <h2 className="flex items-center justify-center mt-4">( {t.home.position} )</h2>
-                    <p className="text-center mt-4 text-white/85 italic leading-relaxed max-w-xl mx-auto">{t.home.description}</p>
+                    <p className="text-center mt-4 text-white/85 italic leading-relaxed max-w-lg md:max-w-xl [text-wrap:balance] mx-auto">{t.home.description}</p>
                     <LinkButton
                         href={info.linkToResume}
                         target="_blank"
                         aria-label={t.home.seeResume}
                         className="flex justify-center mt-4"
                         textToShow={t.home.seeResume}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setIsResumeOpen(true);
+                        }}
                     />
 
                 </div>
@@ -110,24 +166,36 @@ export default function Home() {
             </div>
 
             {/* Scroll hint */}
-            <div className="w-full flex justify-center mt-10">
+            <div className="w-full flex justify-center mt-12 mb-4">
                 <ScrollHint id='what-i-can-do' />
             </div>
 
             {/* What I can do */}
-            <div id='what-i-can-do' className="flex flex-col mt-10">
-                <h1 className="flex items-center justify-center mt-25 md:mt-35 lg:mt-10">{t.home.whatICanDoTitle}</h1>
+            <div id='what-i-can-do' className="flex flex-col mt-20 md:mt-28 lg:mt-36 pt-4">
+                <h1 className="flex items-center justify-center text-center">{t.home.whatICanDoTitle}</h1>
                 <div className="flex flex-col justify-center mb-10 mt-10 md:mt-20 gap-20 md:gap-30">
                     { whatICanDoSections.map((item, idx) => (
                         <CardWhatICanDo  
                             key={idx}
                             title={item.title}
                             contain={item.contain}
+                            imageSrc={item.imageSrc}
+                            imageAlt={item.imageAlt}
+                            tools={item.tools}
+                            isReverse={item.isReverse}
                         />
                     ))
                     }
                 </div>
             </div>
+
+            {/* Resume Preview Modal */}
+            <ResumeModal
+                isOpen={isResumeOpen}
+                onClose={() => setIsResumeOpen(false)}
+                previewUrl={info.resumePreviewUrl || ""}
+                driveUrl={info.linkToResume}
+            />
 
         </section>
     )

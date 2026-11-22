@@ -1,23 +1,25 @@
 import { basicInfoItem, EducationDetailItems } from "@/types/educationPageInfo";
 
 export const EDUCATION_BASIC_INFO : basicInfoItem = {
-    linkToImage: '',
-    heading1: "Education",
-    heading2: "Academic Background",
-    description: "Trình độ học vấn, chuyên ngành đào tạo và các môn học nền tảng hỗ trợ đắc lực cho công việc phát triển phần mềm."
+    linkToImage: '/education_image.svg',
+    heading1: "HỌC VẤN",
+    heading2: "Quá trình đào tạo & Chuyên môn",
+    description: "Nền tảng học vấn chính quy ngành Công nghệ Đa phương tiện tại Trường Đại học Mở Hà Nội, kết hợp toàn diện giữa tư duy thiết kế sáng tạo, kỹ thuật đồ họa 2D, hậu kỳ video số và kỹ năng phát triển ứng dụng."
 }
 
 export const EDUCATION_DETAILS_INFO : EducationDetailItems = [
     {
-        schoolName: "[Tên Trường Đại học / Cao đẳng của bạn]",
-        period: "[Thời gian học: Ví dụ 2022 – 2026]",
-        major: "[Chuyên ngành: Ví dụ Công nghệ thông tin / Khoa học máy tính]",
-        logoSrc: "",
-        websiteUrl: "#",
+        schoolName: "Trường Đại học Mở Hà Nội (HOU)",
+        period: "2023 – Hiện tại",
+        major: "Công nghệ Đa phương tiện – Khoa Công nghệ thông tin (Sinh viên năm cuối)",
+        logoSrc: "/hou_logo.png",
+        logoAlt: "Logo Trường Đại học Mở Hà Nội",
+        websiteUrl: "https://hou.edu.vn",
+        websiteLabel: "Xem trang của trường",
         bullets: [
-            "[Ghi chú: Nêu các môn học nền tảng tiêu biểu (Cấu trúc dữ liệu & giải thuật, Cơ sở dữ liệu, Lập trình hướng đối tượng, Mạng máy tính...)]",
-            "[Ghi chú: Mô tả đồ án tốt nghiệp, đề tài nghiên cứu hoặc các bài tập lớn/hackathon bạn đã tham gia...]",
-            "[Ghi chú: Nêu các chứng chỉ chuyên ngành, học bổng hoặc hoạt động ngoại khóa tiêu biểu trong thời gian học...]",
+            "Chương trình đào tạo chuyên sâu: Thiết kế UI/UX, Thiết kế đồ họa 2D, Kỹ thuật quay dựng & xử lý hậu kỳ video số, Lập trình ứng dụng di động (Android/Java), Hệ cơ sở dữ liệu (SQLite).",
+            "Hoạt động kỹ thuật & truyền thông: Thành viên Ban Kỹ thuật tại CLB SV Vận động hiến máu ĐH Mở Hà Nội & CLB Truyền thông FNEWS — thiết kế toàn bộ ấn phẩm nhận diện sự kiện (Poster, Standee, Backdrop) và sản xuất video recap.",
+            "Dự án & Đồ án học tập tiêu biểu: Thiết kế Prototype hoàn chỉnh ứng dụng thuê xe điện Ecoz (Figma), lập trình game trắc nghiệm Bug Hunter và app Quản lý danh bạ (Android Studio/SQLite), tham gia đồ án hệ thống quản lý nhà trọ SmartTro.",
         ],
     },
 ]

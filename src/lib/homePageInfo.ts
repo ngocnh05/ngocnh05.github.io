@@ -2,9 +2,10 @@ import { basicInfoItem, whatIcandoItem } from "@/types/honePageInfo"
 
 export const HOMEPAGE_BASIC_INFOR : basicInfoItem = {
     fullname: 'Nguyễn Thị Hồng Ngọc',
-    position: 'SOFTWARE ENGINEER',
-    desciption: '[Ghi chú: Viết 2 - 3 câu giới thiệu bản thân: Bạn là ai, chuyên môn chính của bạn là gì, thế mạnh nổi bật và giá trị bạn hướng tới mang lại cho dự án / công ty.]',
-    linkToResume: '#'
+    position: 'Multimedia Technology',
+    desciption: 'Sinh viên năm cuối ngành Công nghệ đa phương tiện, Khoa Công nghệ thông tin – Trường Đại học Mở Hà Nội. Có kinh nghiệm tham gia sáng tạo nội dung video, thiết kế ấn phẩm truyền thông và các hoạt động kỹ thuật tại câu lạc bộ. Đã tiếp cận các công cụ thiết kế, chỉnh sửa đa phương tiện và lập trình thông qua học tập, công việc và dự án. Mong muốn tìm kiếm cơ hội phù hợp để vận dụng kiến thức đã học, phát triển kỹ năng chuyên môn và tích lũy kinh nghiệm thực tế. Có tinh thần trách nhiệm, chủ động học hỏi và\u00A0phối\u00A0hợp\u00A0làm\u00A0việc\u00A0nhóm.',
+    linkToResume: 'https://drive.google.com/drive/folders/1epDxuMO4_IfGCmHI48eK2JrPXjeeRoBh?usp=sharing',
+    resumePreviewUrl: 'https://drive.google.com/file/d/1NZaY3VLVdtJXhsr9zVJucHlrz5uR6ma6/preview'
 }
 
 export const LINK_IMAGE = [];

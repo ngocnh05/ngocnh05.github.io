@@ -6,6 +6,7 @@ export type basicInfoItem = {
     linkToMail?: string;
     linkToLinkedin?: string;
     linkToResume: string;
+    resumePreviewUrl?: string;
 }
 
 export type iconItem =  {

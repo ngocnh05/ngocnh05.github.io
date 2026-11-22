@@ -71,6 +71,6 @@ export function getGreeting(lang: Language = "en", name?: string, short = false)
 export const textTyping = [
   "Hello there!",
   "My name is Hong Ngoc.",
-  "I'm a Software Engineer.",
-  "Building elegant and scalable web products."
+  "Multimedia Technology.",
+  "Building creative and modern web products."
 ];
