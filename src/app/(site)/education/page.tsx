@@ -72,7 +72,7 @@ export default function Education() {
                 <h2 className="flex items-center justify-center text-xl md:text-2xl font-bold tracking-wide text-white uppercase text-center px-4">
                     {t.education.degreesReceived}
                 </h2>
-                <div className="flex flex-col justify-center p-4 md:p-10 max-w-5xl mx-auto">
+                <div className="flex flex-col justify-center p-6 md:p-10 w-full">
                     {educationList.map((item, idx) => (
                         <EducationCard key={idx} {...item} />
                     ))}
