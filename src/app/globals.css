@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@tailwind base;
+@tailwind utilities;
+
+:root {
+  /* Day / Light Mode: Soft daylight blue gradient matching #4C6FAF palette */
+  --bg-gradient: linear-gradient(180deg, #edf4fc 0%, #c8def7 100%);
+  --text-color: #0f172a;
+}
+
+html.dark {
+  /* Night / Dark Mode: EXACT original project background */
+  --bg-gradient: linear-gradient(180deg, #4C6FAF 0%, #1E2B57 100%);
+  --text-color: #ffffff;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  font-family: Monospace, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Day Mode High-Contrast Adaptations */
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-white\/90,
+html.light .text-white\/85,
+html.light .text-white\/80,
+html.light .text-white\/70,
+html.light .text-slate-100,
+html.light .text-slate-200,
+html.light .text-slate-300 {
+  color: #1e293b !important;
+}
+
+html.light .text-\[\#e6e9ec\] {
+  color: #1e293b !important;
+}
+
+html.light .drop-shadow-\[0_10px_30px_rgba\(0\,0\,0\.5\,0\.9\)\] {
+  filter: none !important;
+}
+
+html.light .border-white\/90,
+html.light .border-white\/40,
+html.light .border-white\/35,
+html.light .border-white\/20,
+html.light .border-white\/15,
+html.light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.22) !important;
+}
+
+html.light .bg-\[\#1e2a4a\]\/90,
+html.light .bg-\[\#1e2a4a\]\/85 {
+  background-color: rgba(255, 255, 255, 0.78) !important;
+}
+
+html.light .bg-black\/60,
+html.light .bg-black\/50,
+html.light .bg-black\/45 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-black\/60 span,
+html.light .bg-black\/45 span {
+  color: #0f172a !important;
+}
+
+html.light .bg-white\/5,
+html.light .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html.light .text-\[\#8acbd3\],
+html.light .text-\[\#9ccfd5\] {
+  color: #0369a1 !important;
+}
+
+html.light line[stroke="rgba(255, 255, 255, 0.25)"],
+html.light line[stroke="rgba(255, 255, 255, 0.3)"] {
+  stroke: rgba(15, 23, 42, 0.25) !important;
+}
+
+html.light .text-\[\#ffffff\] {
+  color: #0f172a !important;
+}
+
+html.light nav ul {
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+html.light .effect.text {
+  color: #1e293b !important;
+}
+
+html.light .effect.filter::after {
+  background: #0f172a !important;
+}
+
+html.light .effect.text.active {
+  color: #ffffff !important;
+}
+
+html.light li.active {
+  color: #ffffff !important;
+}
+
+html.light li::after {
+  background: #0f172a !important;
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl font-semibold;
+  }
+}

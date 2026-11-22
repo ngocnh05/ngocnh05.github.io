@@ -1,0 +1,25 @@
+import "./globals.css";
+import type { Metadata } from "next";
+import { AppProvider } from "@/context/AppContext";
+import FloatingControls from "@/components/FloatingControls";
+
+export const metadata: Metadata = {
+  title: "Hong Ngoc's Portfolio",
+  description: "Hong Ngoc's personal portfolio",
+  icons: {
+    icon: "data:,",
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className="light" suppressHydrationWarning>
+      <body className="min-h-screen transition-colors duration-300">
+        <AppProvider>
+          {children}
+          <FloatingControls />
+        </AppProvider>
+      </body>
+    </html>
+  );
+}
