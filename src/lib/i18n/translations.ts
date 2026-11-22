@@ -142,7 +142,7 @@ export const translations = {
     footer: {
       madeWith: "Made with",
       by: "by",
-      repoLink: "link repo",
+      repoLink: "ngocnh05",
     },
     scrollToTop: "Scroll to top",
   },
@@ -286,7 +286,7 @@ export const translations = {
     footer: {
       madeWith: "Được thiết kế với",
       by: "bởi",
-      repoLink: "link repo",
+      repoLink: "ngocnh05",
     },
     scrollToTop: "Lên đầu trang",
   },
