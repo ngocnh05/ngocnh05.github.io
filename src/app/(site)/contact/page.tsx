@@ -44,8 +44,9 @@ export default function Contact() {
 
         setIsSubmitting(true);
         try {
+            const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
             const formData = new FormData();
-            formData.append("access_key", "93ccccd6-9b07-44bf-baa3-b5a5881ec107");
+            formData.append("access_key", accessKey);
             formData.append("name", formValues.name.trim());
             formData.append("email", formValues.email.trim());
             formData.append("message", formValues.message.trim());
