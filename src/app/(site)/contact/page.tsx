@@ -20,6 +20,8 @@ export default function Contact() {
         message: "",
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = (name: string, value: string) => {
         setFormValues((prev) => ({ ...prev, [name]: value }));
     };
@@ -31,36 +33,54 @@ export default function Contact() {
     }>({ open: false, message: "", variant: "success" });
 
     const onSend = async () => {
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formValues),
-            });
-
-            if (!res.ok) {
-                const body = await res.json().catch(() => ({}));
-                setToast({
-                    open: true,
-                    message: body?.error ?? t.contact.sendFailed,
-                    variant: "error",
-                });
-                return;
-            }
-
+        if (!formValues.name.trim() || !formValues.email.trim() || !formValues.message.trim()) {
             setToast({
                 open: true,
-                message: t.contact.sentSuccess,
-                variant: "success",
+                message: t.contact.sendFailed,
+                variant: "error",
+            });
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            const formData = new FormData();
+            formData.append("access_key", "93ccccd6-9b07-44bf-baa3-b5a5881ec107");
+            formData.append("name", formValues.name.trim());
+            formData.append("email", formValues.email.trim());
+            formData.append("message", formValues.message.trim());
+            formData.append("subject", `[Portfolio] Tin nhắn liên hệ mới từ ${formValues.name.trim()}`);
+            formData.append("from_name", "Portfolio Hong Ngoc");
+
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
             });
 
-            setFormValues({ name: "", email: "", message: "" });
+            const data = await res.json();
+
+            if (data.success) {
+                setToast({
+                    open: true,
+                    message: t.contact.sentSuccess,
+                    variant: "success",
+                });
+                setFormValues({ name: "", email: "", message: "" });
+            } else {
+                setToast({
+                    open: true,
+                    message: data.message ?? t.contact.sendFailed,
+                    variant: "error",
+                });
+            }
         } catch {
             setToast({
                 open: true,
                 message: t.contact.networkError,
                 variant: "error",
             });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -154,7 +174,11 @@ export default function Contact() {
                         ))}
                     </div>
                     <div className="mt-8 sm:mt-10">
-                        <SendMessageButton text={t.contact.sendButton} onClick={onSend}/>
+                        <SendMessageButton 
+                            text={isSubmitting ? (t.contact.sendButton === "SEND MESSAGE" ? "SENDING..." : "ĐANG GỬI...") : t.contact.sendButton} 
+                            onClick={onSend}
+                            disabled={isSubmitting}
+                        />
                     </div>
 
                     {/* Social networks on mobile (appears under message form) */}
