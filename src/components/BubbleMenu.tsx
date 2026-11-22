@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { gsap } from 'gsap';
 import { MenuItem } from '@/types/menu';
 import { MENU_ITEMS } from '@/lib/menu';
+import { useApp } from '@/context/AppContext';
 import TextType from './TextType';
 
 export type BubbleMenuProps = {
@@ -41,6 +42,7 @@ export default function BubbleMenu({
   animationDuration = 0.5,
   staggerDelay = 0.12
 }: BubbleMenuProps) {
+  const { lang } = useApp();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
 
@@ -400,6 +402,7 @@ export default function BubbleMenu({
         </div>
       ): (
         <TextType 
+          key={lang}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor

@@ -166,7 +166,7 @@ export const translations = {
       typing: [
         "Xin chào bạn!",
         "Mình là Hồng Ngọc.",
-        "Mình là Software Engineer.",
+        "Mình là Kỹ sư phần mềm.",
         "Xây dựng ứng dụng web hiện đại và hiệu năng cao."
       ],
     },

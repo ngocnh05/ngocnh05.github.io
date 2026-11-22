@@ -50,7 +50,7 @@ const TextType = ({
   handleShowOverLay,
   ...props
 }: TextTypeProps & React.HTMLAttributes<HTMLElement>) => {
-  const { t } = useApp();
+  const { lang, t } = useApp();
   const [displayedText, setDisplayedText] = useState('');
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -63,16 +63,23 @@ const TextType = ({
   const activeText = text ?? t.landing.typing;
   const textArray = useMemo(() => (Array.isArray(activeText) ? activeText : [activeText]), [activeText]);
 
+  // Reset immediately whenever language or textArray changes
+  const prevLangRef = useRef(lang);
+  useEffect(() => {
+    if (prevLangRef.current !== lang) {
+      prevLangRef.current = lang;
+      setDisplayedText('');
+      setCurrentCharIndex(0);
+      setCurrentTextIndex(0);
+      setIsDeleting(false);
+    }
+  }, [lang]);
+
   const getRandomSpeed = useCallback(() => {
     if (!variableSpeed) return typingSpeed;
     const { min, max } = variableSpeed;
     return Math.random() * (max - min) + min;
   }, [variableSpeed, typingSpeed]);
-
-  const getCurrentTextColor = () => {
-    if (textColors.length === 0) return;
-    return textColors[currentTextIndex % textColors.length];
-  };
 
   const handleExploreMe = () => {
     if (handleShowOverLay != undefined){
@@ -81,10 +88,11 @@ const TextType = ({
     else {
       router.push('/home');
     }
-  }
+  };
+
   const handleContactMe = () => {
     router.push('/contact');
-  }
+  };
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
@@ -122,22 +130,23 @@ const TextType = ({
 
     let timeout: ReturnType<typeof setTimeout>;
 
-    const currentText = textArray[currentTextIndex];
+    const safeIndex = currentTextIndex < textArray.length ? currentTextIndex : 0;
+    const currentText = textArray[safeIndex] || '';
     const processedText = reverseMode ? currentText.split('').reverse().join('') : currentText;
 
     const executeTypingAnimation = () => {
       if (isDeleting) {
         if (displayedText === '') {
           setIsDeleting(false);
-          if (currentTextIndex === textArray.length - 1 && !loop) {
+          if (safeIndex === textArray.length - 1 && !loop) {
             return;
           }
 
           if (onSentenceComplete) {
-            onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
+            onSentenceComplete(textArray[safeIndex], safeIndex);
           }
 
-          setCurrentTextIndex(prev => (prev + 1) % textArray.length);
+          setCurrentTextIndex((safeIndex + 1) % textArray.length);
           setCurrentCharIndex(0);
           timeout = setTimeout(() => {}, pauseDuration);
         } else {
@@ -149,13 +158,13 @@ const TextType = ({
         if (currentCharIndex < processedText.length) {
           timeout = setTimeout(
             () => {
-              setDisplayedText(prev => prev + processedText[currentCharIndex]);
+              setDisplayedText(processedText.slice(0, currentCharIndex + 1));
               setCurrentCharIndex(prev => prev + 1);
             },
             variableSpeed ? getRandomSpeed() : typingSpeed
           );
         } else if (textArray.length >= 1) {
-          if (!loop && currentTextIndex === textArray.length - 1) return;
+          if (!loop && safeIndex === textArray.length - 1) return;
           timeout = setTimeout(() => {
             setIsDeleting(true);
           }, pauseDuration);
@@ -187,14 +196,16 @@ const TextType = ({
     onSentenceComplete
   ]);
 
+  const safeIndex = currentTextIndex < textArray.length ? currentTextIndex : 0;
+  const currentSentence = textArray[safeIndex] || '';
   const shouldHideCursor =
-    hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
+    hideCursorWhileTyping && (currentCharIndex < currentSentence.length || isDeleting);
 
-    return createElement(
+  return createElement(
     Component,
     {
-        ref: containerRef,
-        className: `
+      ref: containerRef,
+      className: `
         absolute
         w-full
         px-4 sm:px-10
@@ -202,48 +213,45 @@ const TextType = ({
         -translate-x-1/2 -translate-y-1/2
         inline-block
         whitespace-pre-wrap
-        tracking-tight
+        tracking-normal
         ${className}
-        `,
-        ...props
+      `,
+      ...props
     },
     <div className="flex flex-col items-center gap-6 sm:gap-10 md:gap-14 lg:gap-16 text-center max-w-4xl mx-auto">
-    <h1 className="
-      text-center
-      text-2xl sm:text-4xl lg:text-5xl
-      font-extrabold
-      uppercase
-      tracking-[0.12em] sm:tracking-[0.16em]
-      text-slate-900 dark:text-white
-      drop-shadow-none dark:drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]
-    ">
-      {t.landing.welcome}
-    </h1>
+      <h1 className="
+        text-center
+        text-2xl sm:text-4xl lg:text-5xl
+        font-bold
+        tracking-normal sm:tracking-wide
+        text-slate-900 dark:text-white
+        drop-shadow-none dark:drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]
+        leading-snug sm:leading-tight
+      ">
+        {t.landing.welcome}
+      </h1>
 
-    <div className="flex items-center justify-center min-h-[36px] sm:min-h-[44px]">
-        <h2
-        className="inline font-semibold text-slate-800 dark:text-slate-100 text-base sm:text-2xl md:text-3xl"
-        >
-        {displayedText}
+      <div className="flex items-center justify-center min-h-[36px] sm:min-h-[44px]">
+        <h2 className="inline font-medium text-slate-800 dark:text-slate-100 text-base sm:text-2xl md:text-3xl tracking-normal">
+          {displayedText}
         </h2>
 
         {showCursor && (
-        <span
+          <span
             ref={cursorRef}
-            className={`ml-1 inline-block ${shouldHideCursor ? "hidden" : ""} ${cursorClassName} text-slate-900 dark:text-white font-extrabold text-base sm:text-2xl md:text-3xl`}
-        >
+            className={`ml-1 inline-block ${shouldHideCursor ? "hidden" : ""} ${cursorClassName} text-sky-600 dark:text-cyan-300 font-bold text-base sm:text-2xl md:text-3xl`}
+          >
             {cursorCharacter}
-        </span>
+          </span>
         )}
-    </div>
+      </div>
 
-    <div className="flex flex-row justify-center gap-3 sm:gap-6 md:gap-10 items-center mt-2 sm:mt-4 w-full max-w-sm sm:max-w-none">
-      <SoftButton label={t.landing.exploreMe} onClick={handleExploreMe} />
-      <SoftButton label={t.landing.contactMe} onClick={handleContactMe} />
+      <div className="flex flex-row justify-center gap-3 sm:gap-6 md:gap-10 items-center mt-2 sm:mt-4 w-full max-w-sm sm:max-w-none">
+        <SoftButton label={t.landing.exploreMe} onClick={handleExploreMe} />
+        <SoftButton label={t.landing.contactMe} onClick={handleContactMe} />
+      </div>
     </div>
-    </div>
-    );
-
+  );
 };
 
 export default TextType;

@@ -18,8 +18,8 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export function AppProvider({ children }: { children: React.ReactNode }) {
   // Default language: 'en'
   const [lang, setLangState] = useState<Language>('en');
-  // Default theme: 'light' (Day)
-  const [theme, setThemeState] = useState<Theme>('light');
+  // Default theme: 'dark' (Night)
+  const [theme, setThemeState] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -28,24 +28,26 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       const savedLang = localStorage.getItem('portfolio-lang') as Language;
       if (savedLang === 'en' || savedLang === 'vi') {
         setLangState(savedLang);
+      } else {
+        setLangState('en');
       }
     } catch {
       // ignore
     }
 
-    // 2. Load theme from localStorage, default 'light'
+    // 2. Load theme from localStorage, default 'dark'
     try {
       const savedTheme = localStorage.getItem('portfolio-theme') as Theme;
       if (savedTheme === 'light' || savedTheme === 'dark') {
         setThemeState(savedTheme);
         applyTheme(savedTheme);
       } else {
-        // default is light
-        setThemeState('light');
-        applyTheme('light');
+        // default is dark
+        setThemeState('dark');
+        applyTheme('dark');
       }
     } catch {
-      applyTheme('light');
+      applyTheme('dark');
     }
 
     setMounted(true);
