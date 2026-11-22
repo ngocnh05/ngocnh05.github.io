@@ -2,6 +2,7 @@
 
 import ExperienceTimeline from "@/components/experience/ExperienceTimeLine";
 import { useApp } from "@/context/AppContext";
+import Image from "next/image";
 
 export default function Experience() {
     const { t } = useApp();
@@ -27,13 +28,23 @@ export default function Experience() {
             bullets: t.experience.exp2Bullets,
             tags: t.experience.exp2Tags,
         },
+        {
+            id: "exp-3",
+            period: t.experience.exp3Period,
+            title: t.experience.exp3Title,
+            company: t.experience.exp3Company,
+            linkToCompany: "#",
+            summary: t.experience.exp3Summary,
+            bullets: t.experience.exp3Bullets,
+            tags: t.experience.exp3Tags,
+        },
     ];
 
     return (
         <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 overflow-x-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[420px_1fr] gap-8 md:gap-12 items-start">
 
-                {/* Left: Info & Khung X */}
+                {/* Left: Info & Experience Illustration */}
                 <div className="flex flex-col gap-4 lg:sticky lg:top-24">
                     <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white uppercase">
                         {t.experience.heading1}
@@ -45,29 +56,18 @@ export default function Experience() {
                         {t.experience.description}
                     </p>
 
-                    {/* Khung X Experience */}
-                    <div className="relative w-full max-w-xs md:max-w-sm aspect-4/3 rounded-2xl border-2 border-dashed border-white/35 bg-[#1e2a4a]/85 overflow-hidden flex flex-col items-center justify-center select-none shadow-[0_18px_60px_rgba(0,0,0,0.35)] mt-2">
-                        {/* Đường chéo chữ X nối 4 góc */}
-                        <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="2" strokeDasharray="6 6" />
-                            <line x1="100%" y1="0" x2="0" y2="100%" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="2" strokeDasharray="6 6" />
-                        </svg>
-
-                        {/* Thẻ ghi chú kích thước */}
-                        <div className="relative z-10 flex flex-col items-center justify-center p-4 text-center bg-black/60 rounded-xl border border-white/20 shadow-lg max-w-[85%]">
-                            <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center mb-1.5 text-white">
-                                <span className="text-lg font-bold">✕</span>
-                            </div>
-                            <h4 className="text-xs md:text-sm font-bold text-white tracking-wide">
-                                {t.experience.expFrame}
-                            </h4>
-                            <p className="mt-0.5 text-[11px] md:text-xs font-semibold text-[#8acbd3]">
-                                {t.experience.expFrameSize}
-                            </p>
-                            <span className="text-[10px] md:text-[11px] text-white/70">
-                                {t.experience.expFrameRatio}
-                            </span>
-                        </div>
+                    {/* Illustration Frame */}
+                    <div className="relative w-full max-w-xs md:max-w-sm aspect-4/3 rounded-2xl border border-white/20 bg-slate-900/60 backdrop-blur-md overflow-hidden flex items-center justify-center p-4 shadow-[0_18px_60px_rgba(0,0,0,0.35)] group mt-2">
+                        <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#26aec3]/25 rounded-full blur-2xl pointer-events-none" />
+                        <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-sky-500/20 rounded-full blur-2xl pointer-events-none" />
+                        <Image
+                            src="/experience_image.svg"
+                            alt="Experience Illustration"
+                            width={500}
+                            height={380}
+                            priority
+                            className="relative z-10 w-full h-auto max-h-[220px] object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
+                        />
                     </div>
                 </div>
 

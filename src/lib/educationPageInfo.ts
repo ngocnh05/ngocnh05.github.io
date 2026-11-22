@@ -14,8 +14,6 @@ export const EDUCATION_DETAILS_INFO : EducationDetailItems = [
         major: "Công nghệ Đa phương tiện – Khoa Công nghệ thông tin (Sinh viên năm cuối)",
         logoSrc: "/hou_logo.png",
         logoAlt: "Logo Trường Đại học Mở Hà Nội",
-        websiteUrl: "https://hou.edu.vn",
-        websiteLabel: "Xem trang của trường",
         bullets: [
             "Chương trình đào tạo chuyên sâu: Thiết kế UI/UX, Thiết kế đồ họa 2D, Kỹ thuật quay dựng & xử lý hậu kỳ video số, Lập trình ứng dụng di động (Android/Java), Hệ cơ sở dữ liệu (SQLite).",
             "Hoạt động kỹ thuật & truyền thông: Thành viên Ban Kỹ thuật tại CLB SV Vận động hiến máu ĐH Mở Hà Nội & CLB Truyền thông FNEWS — thiết kế toàn bộ ấn phẩm nhận diện sự kiện (Poster, Standee, Backdrop) và sản xuất video recap.",

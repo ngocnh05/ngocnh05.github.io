@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ProjectShowcaseCardProps } from "@/types/projectsPageInfo";
 import { FaCode } from "react-icons/fa6";
 import { IoDocumentAttach } from "react-icons/io5";
@@ -30,29 +31,47 @@ export default function ProjectShowcaseCard({
         transition={{ duration: 1.2, ease: "easeOut"}}
         className="relative mx-auto max-w-5xl rounded-2xl border border-white/90">
 
-          {/* Media area: Khung X dự án */}
+          {/* Media area: Khung demo dự án */}
           <div className="relative overflow-hidden rounded-t-2xl bg-[#1e2a4a]/90 aspect-16/9 flex items-center justify-center border-b border-white/20 select-none">
-            {/* Đường chéo chữ X nối 4 góc */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="2" strokeDasharray="6 6" />
-              <line x1="100%" y1="0" x2="0" y2="100%" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="2" strokeDasharray="6 6" />
-            </svg>
+            {media?.type === "image" && media.src ? (
+              <Image
+                src={media.src}
+                alt={media.alt || title}
+                fill
+                className="object-cover"
+              />
+            ) : media?.type === "video" && media.src ? (
+              <video
+                src={media.src}
+                poster={media.poster}
+                controls
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <>
+                {/* Đường chéo chữ X nối 4 góc */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="2" strokeDasharray="6 6" />
+                  <line x1="100%" y1="0" x2="0" y2="100%" stroke="rgba(255, 255, 255, 0.25)" strokeWidth="2" strokeDasharray="6 6" />
+                </svg>
 
-            {/* Thẻ thông số kích thước ở trung tâm */}
-            <div className="relative z-10 flex flex-col items-center justify-center p-4 md:p-6 text-center bg-black/60 rounded-xl border border-white/20 shadow-xl max-w-[85%]">
-              <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/10 flex items-center justify-center mb-2 md:mb-3 text-white">
-                <span className="text-xl md:text-2xl font-bold">✕</span>
-              </div>
-              <h4 className="text-sm md:text-lg font-bold text-white tracking-wide">
-                {t.projects.demoFrame}
-              </h4>
-              <p className="mt-1 text-xs md:text-sm font-semibold text-[#8acbd3]">
-                {t.projects.demoFrameSize}
-              </p>
-              <span className="mt-0.5 text-[11px] md:text-xs text-white/70">
-                {t.projects.demoFrameRatio}
-              </span>
-            </div>
+                {/* Thẻ thông số kích thước ở trung tâm */}
+                <div className="relative z-10 flex flex-col items-center justify-center p-4 md:p-6 text-center bg-black/60 rounded-xl border border-white/20 shadow-xl max-w-[85%]">
+                  <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/10 flex items-center justify-center mb-2 md:mb-3 text-white">
+                    <span className="text-xl md:text-2xl font-bold">✕</span>
+                  </div>
+                  <h4 className="text-sm md:text-lg font-bold text-white tracking-wide">
+                    {t.projects.demoFrame}
+                  </h4>
+                  <p className="mt-1 text-xs md:text-sm font-semibold text-[#8acbd3]">
+                    {t.projects.demoFrameSize}
+                  </p>
+                  <span className="mt-0.5 text-[11px] md:text-xs text-white/70">
+                    {t.projects.demoFrameRatio}
+                  </span>
+                </div>
+              </>
+            )}
           </div>
 
         {/* BOTTOM: Purple info panel (overlaps) */}

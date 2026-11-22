@@ -12,21 +12,28 @@ export default function Projects() {
         {
             title: t.projects.proj1Title,
             description: t.projects.proj1Desc,
-            techs: ["React", "Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
+            techs: t.projects.proj1Techs,
             codeUrl: "https://github.com/ngocnh05",
             detailUrl: "https://github.com/ngocnh05",
         },
         {
             title: t.projects.proj2Title,
             description: t.projects.proj2Desc,
-            techs: ["Node.js", "Express", "PostgreSQL", "Redis", "Docker"],
+            techs: t.projects.proj2Techs,
             codeUrl: "https://github.com/ngocnh05",
             detailUrl: "https://github.com/ngocnh05",
         },
         {
             title: t.projects.proj3Title,
             description: t.projects.proj3Desc,
-            techs: ["Python", "FastAPI", "Microservices", "RabbitMQ", "AWS"],
+            techs: t.projects.proj3Techs,
+            codeUrl: "https://github.com/ngocnh05",
+            detailUrl: "https://github.com/ngocnh05",
+        },
+        {
+            title: t.projects.proj4Title,
+            description: t.projects.proj4Desc,
+            techs: t.projects.proj4Techs,
             codeUrl: "https://github.com/ngocnh05",
             detailUrl: "https://github.com/ngocnh05",
         },
@@ -35,15 +42,15 @@ export default function Projects() {
     return (
         <section className="w-full mt-10 md:mt-30 lg:mt-20 mb-30">
             <div className="flex flex-col justify-center items-center gap-5 mb-10 md:mb-20 px-10 md:px-20">
-                <h2 className="uppercase">{t.projects.title}</h2>
-                <span className="max-w-3xl text-center text-white/80">{t.projects.description}</span>
+                <h2 className="uppercase font-bold text-2xl md:text-3xl tracking-wide">{t.projects.title}</h2>
+                <span className="max-w-3xl text-center text-white/80 text-sm md:text-base leading-relaxed">{t.projects.description}</span>
             </div>
             <div className="flex flex-col gap-10 md:gap-15 lg:gap-20 overflow-x-hidden">
                 {projectsList.map((item, idx) => 
                     <ProjectShowcaseCard key={idx} {...item}/>
                 )}
             </div>
-            <div className="mt-10 md:mt-15 lg:mt-20">
+            <div className="mt-10 md:mt-15 lg:mt-20 flex justify-center">
                 <LinkButton
                     href={PROJECTS_BASIC_INFO.linkToGitHub}
                     aria-label={t.projects.seeMore}

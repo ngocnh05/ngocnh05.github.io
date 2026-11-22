@@ -1,50 +1,43 @@
 import { ProjectShowcaseCardProps } from "@/types/projectsPageInfo";
 
 export const PROJECTS_BASIC_INFO = {
-  title: "Featured Projects",
+  title: "Dự án tiêu biểu",
   description:
-    "Danh sách các dự án tiêu biểu minh hoạ năng lực phát triển phần mềm, xây dựng hệ thống và giải quyết bài toán thực tế.",
+    "Các sản phẩm đa phương tiện, nghiên cứu thiết kế UI/UX và ứng dụng di động được hoàn thiện trong quá trình học tập và làm việc nhóm thực tế.",
   linkToGitHub: "https://github.com/ngocnh05",
 };
 
 export const PROJECTS_DETAILS: ProjectShowcaseCardProps[] = [
   {
-    title: "[Dự án 1: Ví dụ - Hệ thống Web Application Fullstack]",
+    title: "SmartTro – Hệ thống Quản lý Nhà trọ Thông minh AI",
     description:
-      "[Ghi chú: Mô tả tổng quan dự án 2 - 3 câu: Mục tiêu dự án, người dùng hướng đến, các tính năng chính và kiến trúc bạn xây dựng...]",
-    techs: ["React / Next.js", "Node.js / Express", "TypeScript", "Tailwind CSS", "PostgreSQL / MongoDB"],
-    codeUrl: "#",
-    detailUrl: "#",
-    media: {
-      type: "image",
-      src: "",
-      alt: "Project Placeholder",
-    },
+      "Hệ thống quản lý nhà trọ thông minh tích hợp AI cảnh báo chỉ số điện, nước bất thường. Đảm nhiệm vai trò Stakeholder Management (phân tích nhu cầu chủ trọ & người thuê) và xây dựng kế hoạch Quản lý chất lượng (QA/QC) kiểm soát tiến độ dự án.",
+    techs: ["Hệ thống AI", "Stakeholder Management", "QA / Testing", "Phân tích yêu cầu", "Kiến trúc hệ thống"],
+    codeUrl: "https://github.com/ngocnh05",
+    detailUrl: "https://github.com/ngocnh05",
   },
   {
-    title: "[Dự án 2: Ví dụ - Nền tảng E-Commerce / Quản lý]",
+    title: "Ecoz – Thiết kế UI/UX Ứng dụng Thuê Xe Điện",
     description:
-      "[Ghi chú: Mô tả các tính năng cốt lõi (Xác thực người dùng, Giỏ hàng, Thanh toán, Dashboard phân tích dữ liệu, Tối ưu SEO/hiệu năng)...]",
-    techs: ["Next.js", "Prisma / Drizzle", "PostgreSQL", "Stripe API", "Docker"],
-    codeUrl: "#",
-    detailUrl: "#",
-    media: {
-      type: "image",
-      src: "",
-      alt: "Project Placeholder",
-    },
+      "Case study thiết kế hoàn chỉnh ứng dụng thuê xe điện đô thị tại Hà Nội. Khảo sát thực tế nhu cầu người dùng, phác thảo User Persona, xây dựng User Flow tối ưu và hoàn thiện toàn bộ Wireframe cùng Prototype tương tác cao trên Figma.",
+    techs: ["Figma", "Thiết kế UI/UX", "User Persona", "User Flow", "Wireframe", "Prototype tương tác"],
+    codeUrl: "https://github.com/ngocnh05",
+    detailUrl: "https://github.com/ngocnh05",
   },
   {
-    title: "[Dự án 3: Ví dụ - Hệ thống API Services & Microservices]",
+    title: "Bug Hunter – Game Trắc nghiệm Android Tương tác",
     description:
-      "[Ghi chú: Mô tả bài toán kỹ thuật, cách bạn thiết kế RESTful/GraphQL API, tối ưu tốc độ phản hồi, xử lý hàng đợi (Queue) hoặc CI/CD...]",
-    techs: ["Python / FastAPI", "Redis Caching", "Docker", "AWS / GCP", "GitHub Actions"],
-    codeUrl: "#",
-    detailUrl: "#",
-    media: {
-      type: "image",
-      src: "",
-      alt: "Project Placeholder",
-    },
+      "Game trắc nghiệm 3 màn hình áp dụng kiến trúc Android nâng cao: Bound Service & BroadcastReceiver xử lý đếm ngược thời gian thực, logic tính sát thương/mạng, khóa nút chống spam, lưu trạng thái onSaveInstanceState và thông báo TaskStackBuilder.",
+    techs: ["Android Studio", "Java", "Bound Service", "BroadcastReceiver", "Notification", "Game Logic"],
+    codeUrl: "https://github.com/ngocnh05",
+    detailUrl: "https://github.com/ngocnh05",
+  },
+  {
+    title: "Contact Manager – Ứng dụng Quản lý Danh bạ SQLite",
+    description:
+      "Ứng dụng Android quản lý danh bạ hoạt động độc lập với CSDL SQLite cục bộ (đầy đủ CRUD). Tối ưu hiệu năng hiển thị danh sách với ExecutorService xử lý đa luồng, bộ lọc Validation định dạng tên/SĐT và AlertDialog xác nhận xóa an toàn.",
+    techs: ["Android Native", "SQLite", "SQLiteOpenHelper", "ExecutorService", "CRUD", "Validation"],
+    codeUrl: "https://github.com/ngocnh05",
+    detailUrl: "https://github.com/ngocnh05",
   },
 ];

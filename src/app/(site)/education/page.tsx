@@ -15,8 +15,6 @@ export default function Education() {
             bullets: t.education.bullets,
             logoSrc: "/hou_logo.png",
             logoAlt: "Hanoi Open University Logo",
-            websiteUrl: "https://hou.edu.vn",
-            websiteLabel: t.education.visitWebsite,
         }
     ];
 
