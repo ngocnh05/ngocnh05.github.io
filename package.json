@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://anhtrinh2905.github.io",
+  "homepage": "https://ngocnh05.github.io/portfolio_ngocnh05",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
