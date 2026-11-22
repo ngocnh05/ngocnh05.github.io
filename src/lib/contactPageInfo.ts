@@ -6,21 +6,21 @@ import { SiGithub, SiTelegram, SiZalo, SiFacebook } from "react-icons/si";
 export const CONTACT_GLASS_CARDS_INFO : ContactGlassCardProps[] = [
     {
         label: "Phone",
-        value: "[Số điện thoại của bạn]",
-        href: "#",
+        value: "0388939710",
+        href: "tel:0388939710",
         icon: FiPhoneCall,
     },
     {
         label: "Email",
-        value: "[Email của bạn]",
-        href: "#",
+        value: "ngochonp232627@gmail.com",
+        href: "mailto:ngochonp232627@gmail.com",
         icon: IoMail,
     },
 ];
 
 export const OPEN_SOURCE_ICONS_INFO : OpenSourceIconProps[] = [
     {
-        href: "#",
+        href: "https://github.com/ngocnh05",
         label: "GitHub",
         icon: SiGithub,
         iconColor: "#ffffff",
@@ -38,7 +38,7 @@ export const OPEN_SOURCE_ICONS_INFO : OpenSourceIconProps[] = [
         iconColor: "#0068FF",
     },
     {
-        href: "#",
+        href: "http://facebook.com/nguyen.hong.ngoc.836813",
         label: "Facebook",
         icon: SiFacebook,
         iconColor: "#1877F2",

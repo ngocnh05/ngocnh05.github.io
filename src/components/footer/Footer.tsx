@@ -19,7 +19,7 @@ export function Footer() {
           <p className="text-sm">
             © {new Date().getFullYear()} ·{" "}
             <Link
-              href="https://github.com/ps257/portfolio-hong-ngoc"
+              href="https://github.com/ngocnh05/ngocnh05.github.io"
               target="_blank"
               rel="noreferrer"
               className="underline underline-offset-4 hover:text-white transition"

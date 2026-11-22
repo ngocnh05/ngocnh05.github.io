@@ -13,22 +13,22 @@ export default function Projects() {
             title: t.projects.proj1Title,
             description: t.projects.proj1Desc,
             techs: ["React", "Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
-            codeUrl: "https://github.com",
-            detailUrl: "https://github.com",
+            codeUrl: "https://github.com/ngocnh05",
+            detailUrl: "https://github.com/ngocnh05",
         },
         {
             title: t.projects.proj2Title,
             description: t.projects.proj2Desc,
             techs: ["Node.js", "Express", "PostgreSQL", "Redis", "Docker"],
-            codeUrl: "https://github.com",
-            detailUrl: "https://github.com",
+            codeUrl: "https://github.com/ngocnh05",
+            detailUrl: "https://github.com/ngocnh05",
         },
         {
             title: t.projects.proj3Title,
             description: t.projects.proj3Desc,
             techs: ["Python", "FastAPI", "Microservices", "RabbitMQ", "AWS"],
-            codeUrl: "https://github.com",
-            detailUrl: "https://github.com",
+            codeUrl: "https://github.com/ngocnh05",
+            detailUrl: "https://github.com/ngocnh05",
         },
     ];
 

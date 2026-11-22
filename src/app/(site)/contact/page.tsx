@@ -68,13 +68,13 @@ export default function Contact() {
         {
             label: t.contact.phoneLabel,
             value: t.contact.phoneValue,
-            href: "#",
+            href: `tel:${t.contact.phoneValue.replace(/\s+/g, '')}`,
             icon: FiPhoneCall,
         },
         {
             label: t.contact.emailLabel,
             value: t.contact.emailValue,
-            href: "#",
+            href: `mailto:${t.contact.emailValue}`,
             icon: IoMail,
         },
     ];

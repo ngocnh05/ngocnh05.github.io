@@ -4,7 +4,7 @@ export const PROJECTS_BASIC_INFO = {
   title: "Featured Projects",
   description:
     "Danh sách các dự án tiêu biểu minh hoạ năng lực phát triển phần mềm, xây dựng hệ thống và giải quyết bài toán thực tế.",
-  linkToGitHub: "#",
+  linkToGitHub: "https://github.com/ngocnh05",
 };
 
 export const PROJECTS_DETAILS: ProjectShowcaseCardProps[] = [

@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   title: "Hong Ngoc's Portfolio",
   description: "Hong Ngoc's personal portfolio",
   icons: {
-    icon: "data:,",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
